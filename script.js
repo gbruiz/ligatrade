@@ -8,7 +8,10 @@ $(document).ready(function () {
     tablaGeneral = $('#tabla-general').DataTable({
         paging: false,
         searching:false,
-        info:false
+        info:false,
+        "columnDefs":[
+            {"width":"10%"},
+            { targets: '_all', className: 'dt-center' }]
     });
     var tablaFechas = $('#tabla-fechas').DataTable({
         paging: false,
@@ -53,6 +56,7 @@ function populateTable(selectedOption) {
             // Create a new row for the table with Posición, Nombre, Puntos, W, L, D
             tablaFechas.row.add([player.Posicion,player.Nombre,player.Puntos,player.W,player.L,player.D]).draw( false );;
         });
+        tablaFechas.columns.adjust().draw();
 }
 
 
@@ -111,6 +115,7 @@ const extractedData = [];
         })
         tablaGeneral.row.add([datosTablaGeneral[index].ranking,datosTablaGeneral[index].nombre,datosTablaGeneral[index].totalPoints,...arrayFechas]).draw( false );;
     });
+    tablaGeneral.columns.adjust().draw();
 
 }
 
