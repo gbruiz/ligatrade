@@ -4,50 +4,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>League Data</title>
+    <title>Liga Sextandard - Post WOE</title>
     <!-- DataTables CSS and JS files from CDN -->
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="DBLiga.js"></script>
     <script src="script.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="datatable.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <div>
-        <label for="fecha-select">Select Fecha:</label>
-        <select id="fecha-select"></select>
-    </div>
-<div id="divGeneral">
-    <table id="tabla-general">
-        <thead>
-            <tr>
-                <th>Posición</th>
-                <th>Nombre</th>
-                <th>Total</th>
-                <th>Fecha 1</th>
-                <th>Fecha 2</th>
-                <th>Fecha 3</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
-</div>
-<div id="divFechas">
-    <table id="tabla-fechas">
-        <thead>
-            <tr>
-                <th>Posición</th>
-                <th>Nombre</th>
-                <th>Puntos</th>
-                <th>W</th>
-                <th>L</th>
-                <th>D</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
-</div>
+    <main class="table">
+        <section class="table_header">
+            <h1>Liga Sextandard</h1>
+            <div>
+                <label for="fecha-select">Seleccione Fecha:</label>
+                <select id="fecha-select"></select>
+            </div>
+        </section>
+        <section class="table_body"> 
+            <table id="tabla-general">
+                <thead>
+                    <tr>
+                        <th>Posición</th>
+                        <th>Nombre</th>
+                        <th>Total</th>
+                        <th>Fecha 1</th>
+                        <th>Fecha 2</th>
+                        <th>Fecha 3</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <table id="tabla-fechas">
+                <thead>
+                    <tr>
+                        <th>Posición</th>
+                        <th>Nombre</th>
+                        <th>Puntos</th>
+                        <th>W</th>
+                        <th>L</th>
+                        <th>D</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+        <section class="table_body"> 
+            <table id="tabla-fechas">
+                <thead>
+                    <tr>
+                        <th>Posición</th>
+                        <th>Nombre</th>
+                        <th>Puntos</th>
+                        <th>W</th>
+                        <th>L</th>
+                        <th>D</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+    </main>
+    
 </body>
 
 </html>

@@ -6,14 +6,18 @@ $(document).ready(function () {
     console.log("P*to el que lee")
     // Initialize the DataTable
     tablaGeneral = $('#tabla-general').DataTable({
-        paging: false
+        paging: false,
+        searching:false,
+        info:false
     });
     var tablaFechas = $('#tabla-fechas').DataTable({
-        paging: false
+        paging: false,
+        searching:false,
+        info:false
     });
     const fechaSelect = $('#fecha-select');
 
-    $("#divFechas").hide();
+    $("#tabla-fechas_wrapper").hide();
 // Call the function with your jsonData
 
     fechaSelect.append(`<option value="general">General</option>`);
@@ -29,11 +33,11 @@ $(document).ready(function () {
     fechaSelect.on('change', function () {
         var selectedFecha = $(this).val();
         if(selectedFecha == "general"){
-            $("#divFechas").hide();
-            $("#divGeneral").show();
+            $("#tabla-fechas_wrapper").hide();
+            $("#tabla-general_wrapper").show();
         }else{
-            $("#divFechas").show();
-            $("#divGeneral").hide();
+            $("#tabla-fechas_wrapper").show();
+            $("#tabla-general_wrapper").hide();
             populateTable(selectedFecha);
         }
     });
