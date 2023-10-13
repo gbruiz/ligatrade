@@ -6,6 +6,10 @@
     font-family: sans-serif;
 }
 
+h1 {
+    padding-bottom: 3px;
+}
+
 body {
     min-height: 100vh;
     background: rgb(12,12,50);
