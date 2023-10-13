@@ -1,6 +1,7 @@
 var datosTablaGeneral = [];
 var fechas = [];
 var tablaGeneral
+var titulo = "Liga Sextandard"
 
 $(document).ready(function () {
     console.log("P*to el que lee")
@@ -11,12 +12,23 @@ $(document).ready(function () {
         info:false,
         "columnDefs":[
             {"width":"10%"},
-            { targets: '_all', className: 'dt-center' }]
+            { targets: '_all', className: 'dt-center' }],
+        fixedColumns: {
+            left: 2
+        },
+        fixedHeader: true
     });
     var tablaFechas = $('#tabla-fechas').DataTable({
         paging: false,
         searching:false,
-        info:false
+        info:false,
+        "columnDefs":[
+            {"width":"10%"},
+            { targets: '_all', className: 'dt-center' }],
+        fixedColumns: {
+            left: 2
+        },
+        fixedHeader: true
     });
     const fechaSelect = $('#fecha-select');
 
@@ -36,9 +48,13 @@ $(document).ready(function () {
     fechaSelect.on('change', function () {
         var selectedFecha = $(this).val();
         if(selectedFecha == "general"){
+            $("#tituloLiga").html(titulo+ " - Tabla General")
             $("#tabla-fechas_wrapper").hide();
             $("#tabla-general_wrapper").show();
         }else{
+            var fechaTitulo = jsonData[selectedFecha][0]["Fecha"]
+            $("#tituloLiga").html(titulo+ " - "+ selectedFecha + " - "+ fechaTitulo)
+
             $("#tabla-fechas_wrapper").show();
             $("#tabla-general_wrapper").hide();
             populateTable(selectedFecha);
@@ -49,12 +65,16 @@ $(document).ready(function () {
 // Function to populate the table based on the selected option
 function populateTable(selectedOption) {
     tablaFechas.clear();
+        
        // Populate the Fecha tables
         const fechaData = jsonData[selectedOption] || {};
+       
         // Iterate through each entry in the selected "Fecha" and populate the table
         fechaData.forEach(player => {
             // Create a new row for the table with Posición, Nombre, Puntos, W, L, D
-            tablaFechas.row.add([player.Posicion,player.Nombre,player.Puntos,player.W,player.L,player.D]).draw( false );;
+            if(!player.Fecha){
+            tablaFechas.row.add([player.Posicion,player.Nombre,player.Puntos,player.W,player.L,player.D]).draw( false );
+        }
         });
         tablaFechas.columns.adjust().draw();
 }
@@ -70,6 +90,10 @@ const extractedData = [];
         const fechaData = data[fecha];
         // Iterate through each entry in the "Fecha"
         fechaData.forEach(entry => {
+            if(entry.Fecha){
+                return
+            }
+
             const nombre = entry.Nombre;
             const puntos = parseInt(entry.Puntos); // Parse points as integer
             const W = parseInt(entry.W);
