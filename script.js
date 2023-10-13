@@ -11,20 +11,33 @@ $(document).ready(function () {
         searching:false,
         info:false,
         "columnDefs":[
-            {"width":"10%"},
-            { targets: '_all', className: 'dt-center' }],
+            {targets:1, className: 'dt-body-left dt-bold cell-border-right'},
+            {targets:2, className: 'dt-center dt-bold cell-border-right'},
+            { targets: '_all', className: 'dt-center' },
+            {targets: '_all', height:"600px"}
+            
+        ],
         fixedColumns: {
             left: 2
         },
-        fixedHeader: true
+        fixedHeader: true,
+        "createdRow": function( row, data, dataIndex){
+            if( data[0] <  9){
+                $(row).addClass('top-ocho');
+            }
+        }
     });
     var tablaFechas = $('#tabla-fechas').DataTable({
         paging: false,
         searching:false,
         info:false,
         "columnDefs":[
-            {"width":"10%"},
-            { targets: '_all', className: 'dt-center' }],
+            {targets:1, className: 'dt-left dt-bold cell-border-right'},
+            {targets:2, className: 'dt-body-center dt-bold cell-border-right'},
+            { targets: '_all', className: 'dt-center' },
+            {targets: '_all', height:"600px"}
+        ],
+
         fixedColumns: {
             left: 2
         },
@@ -77,6 +90,7 @@ function populateTable(selectedOption) {
         }
         });
         tablaFechas.columns.adjust().draw();
+        
 }
 
 

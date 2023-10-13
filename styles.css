@@ -39,14 +39,14 @@ main.table {
 
 .table_header {
     width: 100%;
-    height: 10%;
+    min-height: 10%;
     background-color: #fff4;
     padding: .8rem 1rem;
 }
 
 .table_body {
     width: 95%;
-    max-height: calc(89% - .8rem);
+    max-height: calc(89% - 1.6rem);
     background-color: #fffb;
 
     margin: .8rem auto;
@@ -79,8 +79,26 @@ thead th {
     top: 0;
     left: 0;
     background-color: #d5d1defe;
+    border-right: none !important;
 }
 
 table.dataTable.display > tbody > tr.even  {
     background-color: #0000000b;
 }
+
+.dt-bold {
+    font-weight: bold;
+}
+
+tr {
+    height: 50px;
+}
+
+.cell-border-right{
+    border-right: 1px solid #000
+}
+
+.top-ocho {
+        background-color: rgba(80, 200, 120,0.2) !important;
+}
+
