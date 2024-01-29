@@ -178,7 +178,8 @@ function OrdenarTablaGeneral(data){
     })
 
     orderArray.sort(function (player1, player2) {
-
+        var player1Percentage = player1.totalW / (player1.totalW + player1.totalW + player1.totalW);
+        var player2Percentage = player2.totalW / (player2.totalW + player2.totalW + player2.totalW);
         //Sort by points
         if (player1.totalPoints > player2.totalPoints) return -1;
         if (player1.totalPoints< player2.totalPoints) return 1;
